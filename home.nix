@@ -39,11 +39,10 @@
       userEmail = "agheieff@pm.me";
     };
 
-    # Replace Fish with Bash
     bash = {
       enable = true;
       initExtra = ''
-        export PATH=/etc/profiles/pes-user/I571313/bin:$PATH
+        export PATH=/etc/profiles/per-user/I571313/bin:$PATH
         aerospace &
         sketchybar &
       '';
