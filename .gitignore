@@ -1,5 +1,12 @@
 *
 
-!*.nix
-!*.sh
+!**/*.nix
+!**/*.sh
+!**/*.toml
+!**/*.c
+!**/*.h
+!**/*.lua
+!**/sketchybarrc
 !.gitignore
+
+!**/
