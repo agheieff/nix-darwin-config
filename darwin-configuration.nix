@@ -18,6 +18,42 @@
   system.stateVersion = 5;
 
   # Enable alternative shell support in nix-darwin.
-  programs.fish.enable = true;
-  programs.zsh.enable = true;
+  programs.fish.enable = false;  # Disable Fish
+  programs.zsh.enable = true;    # Keep Zsh enabled if needed
+  
+  environment.systemPath = [
+    "/opt/homebrew/bin"
+    "/run/current-system/sw/bin"
+  ];
+
+  homebrew = {
+    enable = true;
+    taps = [
+      "FelixKratz/formulae"
+    ];
+    brews = [
+      "sketchybar"
+    ];
+    casks = [ 
+      "firefox@developer-edition"
+      "microsoft-teams"
+      "microsoft-outlook"
+      "alacritty"
+      "lm-studio"
+      "libreoffice"
+      "font-dejavu-sans-mono-nerd-font"
+      "font-droid-sans-mono-nerd-font"
+      "font-jetbrains-mono-nerd-font"
+      "font-liberation-nerd-font"
+      "font-noto-nerd-font"
+      "font-roboto-mono-nerd-font"
+      "font-space-mono-nerd-font"
+    ];
+
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+      cleanup = "zap";
+    };
+  };
 }

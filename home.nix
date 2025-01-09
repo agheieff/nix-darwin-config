@@ -3,24 +3,31 @@
     stateVersion = "23.11";
     username = "I571313";
     homeDirectory = "/Users/I571313";
+    sessionPath = [
+      "/opt/homebrew/bin"
+      "/etc/profiles/per-user/I571313/bin"
+    ];
     packages = with pkgs; [
-      sketchybar
+      # Nerd Fonts
+      nerd-fonts.hack
+      nerd-fonts.space-mono
+      lua
+
+      neovim
+      gimp
       aerospace
       alacritty
       ripgrep
       fd
       fzf
+
+      gcc
+      cmake
     ];
   };
 
-    home.activation = {
-    aliasApplications = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      app_folder=$(echo ~/Applications);
-      for app in $(find "$genProfilePath/home-path/Applications" -type l); do
-        $DRY_RUN_CMD rm -f $app_folder/$(basename $app)
-        $DRY_RUN_CMD osascript -e "tell app \"Finder\"" -e "make new alias file at POSIX file \"$app_folder\" to POSIX file \"$app\"" -e "set name of result to \"$(basename $app)\"" -e "end tell"
-      done
-    '';
+  fonts = {
+    fontconfig.enable = true;
   };
 
   programs = {
@@ -32,18 +39,28 @@
       userEmail = "agheieff@pm.me";
     };
 
-    fish = {
+    # Replace Fish with Bash
+    bash = {
       enable = true;
-      shellInit = ''
+      initExtra = ''
+        export PATH=/etc/profiles/pes-user/I571313/bin:$PATH
         aerospace &
         sketchybar &
       '';
     };
   };
 
+  # Set Bash as the default shell
+  home.sessionVariables.SHELL = "${pkgs.bash}/bin/bash";
+
   home.file.".config/aerospace/aerospace.toml".source = ./aerospace.toml;
   home.file.".config/sketchybar" = {
-    source = ./sketchybar;
+    source = lib.fileset.toSource {
+      root = ./sketchybar;
+      fileset = lib.fileset.unions [
+        ./sketchybar
+      ];
+    };
     recursive = true;
   };
 }
