@@ -6,6 +6,7 @@
 !**/*.c
 !**/*.h
 !**/*.lua
+!**/*.md
 !**/sketchybarrc
 !.gitignore
 
