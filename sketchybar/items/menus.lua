@@ -15,6 +15,12 @@ local swapWatcher = sbar.add("item", {
   updates = true,
 })
 
+-- Define menu.padding
+sbar.add("item", constants.items.MENU .. ".padding", {
+  width = settings.dimens.padding.label,
+  drawing = isShowingMenu,
+})
+
 local function createPlaceholders()
   for index = 1, maxItems, 1 do
     local menu = sbar.add("item", constants.items.MENU .. "." .. index, {

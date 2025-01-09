@@ -54,14 +54,21 @@
   home.sessionVariables.SHELL = "${pkgs.bash}/bin/bash";
 
   home.file.".config/aerospace/aerospace.toml".source = ./aerospace.toml;
+
   home.file.".config/sketchybar" = {
-    source = lib.fileset.toSource {
-      root = ./sketchybar;
-      fileset = lib.fileset.unions [
-        ./sketchybar
-      ];
-    };
+    source = pkgs.runCommand "sketchybar-config" {} ''
+      mkdir -p $out
+      cp -r ${./sketchybar}/* $out/
+
+      # Ensure the directories exist before running chmod
+      if [[ -d $out/bridge/menus/bin ]]; then
+        chmod -R +x $out/bridge/menus/bin
+      fi
+
+      if [[ -d $out/bridge/network_load/bin ]]; then
+        chmod -R +x $out/bridge/network_load/bin
+      fi
+    '';
     recursive = true;
   };
 }
-

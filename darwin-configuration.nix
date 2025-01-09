@@ -26,7 +26,10 @@
       "FelixKratz/formulae"
       "nikitabobko/tap"
     ];
-    brews = [ "sketchybar" ];
+    brews = [
+      "sketchybar"
+      "switchaudio-osx"
+    ];
     casks = [
       "aerospace"
       "firefox@developer-edition"
