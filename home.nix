@@ -2,8 +2,9 @@
   home = {
     stateVersion = "23.11";
     username = "I571313";
-    homeDirectory = "/Users/I571313";  # Ensure this is a valid path
+    homeDirectory = "/Users/I571313";
     packages = with pkgs; [
+      alacritty
       ripgrep
       fd
       fzf
@@ -15,8 +16,8 @@
     
     git = {
       enable = true;
-      userName = "Your Name";
-      userEmail = "your.email@example.com";
+      userName = "agheieff";
+      userEmail = "agheieff@pm.me";
     };
 
     fish = {

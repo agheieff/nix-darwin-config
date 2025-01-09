@@ -15,10 +15,11 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     system = "aarch64-darwin";
+    hostname = "KYWD6Y5YHQ";  # Replace with your actual hostname or configuration name
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
-    darwinConfigurations."simple" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
       inherit system;
       modules = [
         ./darwin-configuration.nix

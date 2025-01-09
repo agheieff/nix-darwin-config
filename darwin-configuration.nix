@@ -1,4 +1,10 @@
 { pkgs, ... }: {
+  # Define the user in the system configuration
+  users.users.I571313 = {
+    name = "I571313";
+    home = "/Users/I571313";  # Ensure this matches the homeDirectory in home.nix
+  };
+
   # System configuration
   environment.systemPackages = [ pkgs.vim ];
 
