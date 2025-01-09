@@ -4,6 +4,8 @@
     username = "I571313";
     homeDirectory = "/Users/I571313";
     packages = with pkgs; [
+      sketchybar
+      aerospace
       alacritty
       ripgrep
       fd
@@ -22,6 +24,10 @@
 
     fish = {
       enable = true;
+      shellInit = ''
+        aerospace &
+        sketchybar &
+      '';
     };
   };
 }
