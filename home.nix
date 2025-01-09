@@ -11,7 +11,7 @@
       # Nerd Fonts
       nerd-fonts.hack
       nerd-fonts.space-mono
-      lua
+      lua5_4
 
       neovim
       gimp

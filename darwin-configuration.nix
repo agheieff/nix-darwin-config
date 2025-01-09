@@ -30,11 +30,13 @@
     enable = true;
     taps = [
       "FelixKratz/formulae"
+      "nikitabobko/tap"
     ];
     brews = [
       "sketchybar"
     ];
-    casks = [ 
+    casks = [
+      "aerospace"
       "firefox@developer-edition"
       "microsoft-teams"
       "microsoft-outlook"
