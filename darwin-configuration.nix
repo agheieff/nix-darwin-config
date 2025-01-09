@@ -1,25 +1,19 @@
 { pkgs, ... }: {
-  # Define the user in the system configuration
   users.users.I571313 = {
     name = "I571313";
-    home = "/Users/I571313";  # Ensure this matches the homeDirectory in home.nix
+    home = "/Users/I571313";
   };
 
-  # System configuration
   environment.systemPackages = [ pkgs.vim ];
 
-  # Necessary for using flakes on this system.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  # Used for backwards compatibility
   system.stateVersion = 5;
 
-  # Enable alternative shell support in nix-darwin.
-  programs.fish.enable = false;  # Disable Fish
-  programs.zsh.enable = true;    # Keep Zsh enabled if needed
+  programs.fish.enable = false;
+  programs.zsh.enable = true;
   
   environment.systemPath = [
     "/opt/homebrew/bin"
@@ -32,9 +26,7 @@
       "FelixKratz/formulae"
       "nikitabobko/tap"
     ];
-    brews = [
-      "sketchybar"
-    ];
+    brews = [ "sketchybar" ];
     casks = [
       "aerospace"
       "firefox@developer-edition"

@@ -15,7 +15,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     system = "aarch64-darwin";
-    hostname = "KYWD6Y5YHQ";  # Replace with your actual hostname or configuration name
+    hostname = "KYWD6Y5YHQ";
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {

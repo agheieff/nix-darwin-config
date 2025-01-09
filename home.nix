@@ -12,6 +12,7 @@
       nerd-fonts.hack
       nerd-fonts.space-mono
       lua5_4
+      neofetch
 
       neovim
       gimp
@@ -63,3 +64,4 @@
     recursive = true;
   };
 }
+
