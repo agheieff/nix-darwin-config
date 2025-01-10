@@ -6,6 +6,7 @@
     sessionPath = [
       "/opt/homebrew/bin"
       "/etc/profiles/per-user/I571313/bin"
+      "/Users/I571313/bin"
     ];
     packages = with pkgs; [
       # Nerd Fonts
@@ -24,6 +25,7 @@
 
       gcc
       cmake
+      bash
     ];
   };
 
@@ -42,9 +44,13 @@
 
     bash = {
       enable = true;
+      package = pkgs.bash;
       initExtra = ''
         export PATH=/etc/profiles/per-user/I571313/bin:$PATH
-        aerospace &
+        export PATH=/opt/homebrew/bin:$PATH
+        export PATH="$HOME/bin:$PATH"
+        source ~/.bash_profile
+        pkill sketchybar
         sketchybar &
       '';
     };
