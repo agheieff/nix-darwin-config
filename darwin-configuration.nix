@@ -31,6 +31,7 @@
       "switchaudio-osx"
     ];
     casks = [
+      "vlc"
       "aerospace"
       "firefox@developer-edition"
       "microsoft-teams"

@@ -1,3 +1,4 @@
+
 { pkgs, lib, ... }: {
   home = {
     stateVersion = "23.11";
@@ -9,12 +10,11 @@
       "/Users/I571313/bin"
     ];
     packages = with pkgs; [
-      # Nerd Fonts
+      wget
       nerd-fonts.hack
       nerd-fonts.space-mono
       lua5_4
       neofetch
-
       neovim
       gimp
       aerospace
@@ -22,10 +22,8 @@
       ripgrep
       fd
       fzf
-
       gcc
       cmake
-      bash
     ];
   };
 
@@ -44,8 +42,10 @@
 
     bash = {
       enable = true;
-      package = pkgs.bash;
+      package = pkgs.bashInteractive;
+      enableCompletion = true;
       initExtra = ''
+        export SHELL="${pkgs.bashInteractive}/bin/bash"
         export PATH=/etc/profiles/per-user/I571313/bin:$PATH
         export PATH=/opt/homebrew/bin:$PATH
         export PATH="$HOME/bin:$PATH"
@@ -56,8 +56,8 @@
     };
   };
 
-  # Set Bash as the default shell
-  home.sessionVariables.SHELL = "${pkgs.bash}/bin/bash";
+  # Set Bash as the default shell using the same package as programs.bash
+  home.sessionVariables.SHELL = "${pkgs.bashInteractive}/bin/bash";
 
   home.file.".config/aerospace/aerospace.toml".source = ./aerospace.toml;
 
