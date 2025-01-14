@@ -32,13 +32,6 @@ outer.right = 4
 outer.top = [{ monitor.main = 4 }, { monitor.secondary = 37 }, 30]
 
 [mode.main.binding]
-alt-enter = '''exec-and-forget osascript -e '
-tell application "Terminal"
-    do script
-    activate
-end tell'
-'''
-
 alt-w = ['focus up', 'exec-and-forget sketchybar --trigger change-focused-window']
 alt-a = ['focus left', 'exec-and-forget sketchybar --trigger change-focused-window']
 alt-r = ['focus down', 'exec-and-forget sketchybar --trigger change-focused-window']
